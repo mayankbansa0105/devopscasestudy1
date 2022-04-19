@@ -1,8 +1,22 @@
 -
    name: Docker Install
+   vars:
+    logrotate_scripts:
+      - name: nginx-options
+        path: /home/mayankbansal0107/nginx/*.log
+        options:
+          - daily
+          - size 100M
+          - rotate 1
+          - missingok
+          - compress
+          - delaycompress
+          - copytruncate
+    logrotate_conf_dir: /etc/logrotate.d/
    hosts: all
    become: yes
 
    roles:
            - docker-install
-           - nginx       
+           - nginx
+           - logrotation

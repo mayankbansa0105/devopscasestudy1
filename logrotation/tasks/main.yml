@@ -1,0 +1,13 @@
+         - name: install logrotate
+           apt:
+              name: logrotate
+              state: present
+         - name: create config file
+           file:
+                path: /etc/logrotate.d/nginx-options
+                state: touch
+         - name: Logroate
+           shell: logrotate -d "{{ logrotate_conf_dir }}{{ item.name }}"
+           with_items: "{{ logrotate_scripts }}"
+           register: logrotate_tests
+           failed_when: "'error' in logrotate_tests.stderr"

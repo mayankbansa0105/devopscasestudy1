@@ -1,2 +1,2 @@
 [devops] 
-10.182.0.17 ansible_connection=ssh ansible_user=mayank ansible_ssh_private_key_file=/home/mayankbansal0107/docker-playbook/id_rsa ansible_python_interpreter=/usr/bin/python3
+10.182.0.18 ansible_connection=ssh ansible_user=mayank ansible_ssh_private_key_file=/home/mayankbansal0107/docker-playbook/id_rsa ansible_python_interpreter=/usr/bin/python3
