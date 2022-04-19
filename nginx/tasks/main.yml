@@ -1,0 +1,8 @@
+        - name: create container
+          docker_container:
+                  name: nginx
+                  image: nginx
+                  ports:
+                       - "8080:80"
+                  volumes:
+                       - /home/mayankbansal0107/nginx:/var/log/nginx

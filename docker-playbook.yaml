@@ -1,0 +1,8 @@
+-
+   name: Docker Install
+   hosts: all
+   become: yes
+
+   roles:
+           - docker-install
+           - nginx       

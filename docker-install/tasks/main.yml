@@ -1,0 +1,40 @@
+        - name: Dependency Install
+          apt:
+               name: '{{ item }}'
+               state: present
+               update_cache: yes
+          become: yes
+          with_items:
+                  - ca-certificates
+                  - curl
+                  - gnupg
+                  - lsb-release
+                  - python3-pip
+        - name: Install Docker Engine
+          apt:
+               name: '{{ item }}'
+               state: present
+               update_cache: yes
+          become: yes
+          with_items:
+                  - docker.io
+                  - containerd
+        - name: install docker-py for ansible
+          pip:
+                  name: docker
+        - name: change vfgroup driver
+          lineinfile:
+                  path: /etc/docker/daemon.json 
+                  state: present
+                  create: yes
+                  line: '{  "exec-opts": ["native.cgroupdriver=systemd"] }'
+        - name: start docker 
+          systemd:
+                  name: docker
+                  state: started
+                  enabled: yes
+        - name: configure docker with systemd
+          systemd:
+                  name: docker
+                  state: restarted
+                  daemon-reload: yes
