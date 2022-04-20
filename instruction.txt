@@ -1,0 +1,5 @@
+Playbook is having three roles.
+1) Docker install - This role have task to setup docker on ubuntu os. first we will install dependency packages and then we configure docker repo with keys.
+later, docker will be installed and service will be restarted and enabled.
+2) Nginx - this role will start a nginx container with host  port mapping on 8080 to 80 port of nginx container. we will also use volume mount of nginx container log path with os path that will be used by logrotate for logrotation
+3) Logrotate - this role will create a conf file nginx-options with required configuration and then it will rotate logs if size is greater than 100 MB.
